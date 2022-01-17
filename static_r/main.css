@@ -1,0 +1,99 @@
+
+@font-face {
+  font-family: myFourthFont;
+  src: url("medium.otf");
+}
+@font-face {
+  font-family: myFifthFont;
+  src: url("p_bold.otf");
+}
+
+body
+{
+    font-family: myFourthFont;
+}
+#state_section
+{
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
+}
+.states 
+{
+    width: 11rem;
+    display: inline-block;
+    margin: 2rem 1.6rem 2rem 1.6rem;
+    text-align: center;
+}
+.state_card
+{
+    box-shadow: 0px 1px 15px rgba(0,0,0,0.2);
+    height: 15rem;
+    width: 100%;
+    border-radius: 1.5rem;
+    display: inline-block;
+    position: relative;
+}
+.state_card:hover
+{
+    cursor: pointer;
+}
+.state_card img
+{
+    width: 100%;
+    margin: auto 0;
+    top: 0;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 1.5rem;
+}
+.state_card p
+{
+    text-shadow: 1px 1px black;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    margin-bottom: .5rem;
+    font-size: 1.3rem;
+    font-family: myFifthFont;
+    line-height: 1;
+}
+.states p
+{
+    color: black;
+}
+@media screen and (max-width: 800px)
+{
+    html
+    {
+        font-size: 75%;
+    }
+    #state_section
+    {
+        width: 100%;
+    }
+    .states
+    {
+        width: 12rem;
+    }
+    .state_card
+    {
+        height: 16rem;
+    }
+}
+@media screen and (max-width: 400px)
+{
+    .states
+    {
+        margin: 2rem 1.2rem;
+    }
+}
+@media screen and (max-width: 370px)
+{
+    .states
+    {
+        margin: 2rem .5rem;
+    }
+}

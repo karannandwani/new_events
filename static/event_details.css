@@ -1,0 +1,101 @@
+
+@font-face {
+  font-family: myThirdFont;
+  src: url("SF-Pro-Display-Thin.otf");
+}
+#rest_container
+{
+    width: 80%;
+    margin: 0 auto;
+    font-family: mySecondFont;
+}
+#intro
+{
+    width: 100%;
+    position: relative;
+}
+#intro img
+{
+    width: 14rem;
+    height: 14rem;
+    display: inline-block;
+    border-radius: 1.5rem;
+}
+#main_details
+{
+    position: absolute;
+    display: inline-block;
+    margin-left: 3rem;
+}
+#name
+{
+    margin: 0;
+    font-size: 3rem;
+
+}
+#summary
+{
+    font-size: 1.5rem;
+    font-family: myThirdFont !important;
+}
+#rules
+{
+    display: inline-block;
+    font-family: myThirdFont !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#cost
+{
+    font-size: 2rem;
+}
+@media screen and (max-width: 800px)
+{
+    html
+    {
+        font-size: 75%;
+    }
+    header p
+    {
+        font-size: 1.5rem;
+    }
+    #rest_container
+    {
+        width: 90%;
+        margin: 0 auto;
+    }
+    #intro
+    {
+        width: 100%;
+    }
+    #main_details
+    {
+        text-align: center;
+        margin: 0 1rem;
+        width: 90%;
+        position: static;
+    }
+    #intro img, #name, #summary
+    {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    #intro img
+    {
+        width: 16.5rem;
+        height: 16.5rem;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+}
+@media screen and (min-width: 801px) {
+    #rules {
+        margin-top: 120px;
+    }
+}
+@media screen and (min-width: 1070px) {
+    #rules {
+        margin-top: 70px;
+    }
+}

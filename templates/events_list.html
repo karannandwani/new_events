@@ -1,0 +1,43 @@
+{% extends 'header_file.html' %}
+{% load static %}
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        {% block extra_links %}
+        <title> Events </title>
+        <link href = "{% static 'event_details.css' %}" rel = "stylesheet" type= "text/css">
+        {% endblock %}
+    </head>
+    <body>
+        {% block heading %}
+        Events List
+        {% endblock %}
+        {% block rest_container%}
+        <div id = "rest_container">
+  <ul>
+    <div class="main">
+        <ol>
+            <!-- Iterate over object_list -->
+            {% for evt in object_list %}
+            <!-- Display Objects -->
+            {% if evt.eventadmin == request.user %}
+            <a href="/eventsedit/{{evt.id}}"><li>{{ evt.name }}</li></a>
+            <hr/>
+            {% endif %}
+            <!-- If objet_list is empty  -->
+            {% empty %}
+            <li>No Events registered for this User Yet.</li>
+            {% endfor %}
+        </ol>
+    </div>
+  </ul>
+  {% if request.user.is_authenticated %}
+  <button onclick="window.location='/eventscreate/'">Add event</button>
+  <h5>Logged in as: {{request.user.username}} &nbsp; <a href="/logout/">Logout</a></h5>
+  {%else%}
+  <h5>Login to see your events: <a href="/special_admin_login/">Login</a></h5>
+  {% endif %}
+        </div>
+        {% endblock %}
+    </body>
+</html>

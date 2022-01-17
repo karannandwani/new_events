@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'newcss/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'newcss/details.css' %}" />
+    <title>Details</title>
+</head>
+
+<body>
+    <!-- Side Slider -->
+    <div id="sidebar-menu">
+        <div class="menuicon">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <div class="homeicon">
+            <a href="/" class="hometag"> <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                <path
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+            </svg></a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <!-- Sidebar Logo -->
+        <div id="logo">
+            <img src="{% static 'newimg/logo.png' %}">
+            <div class="sidebar-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+
+            </div>
+        </div>
+
+        <!-- Sidebar User -->
+
+
+        <!-- Sidebar Links -->
+        <div class="collapsible-menu" id="sidebar-links">
+            <div class="menu-content">
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- main body -->
+
+    <!-- Navbar cration -->
+    <div id="main">
+        <div class="navbar">
+            <div class="nav_header">
+                <h2 id="head">Details</h2>
+            </div>
+            <div id="side">
+                <div class="search-bar">
+                    <div class="search-container">
+                        <input class="search-input" id="myInput" onkeyup="search()" type="text" placeholder="Search" />
+                    </div>
+                </div>
+                <div class="filter">
+                    <select onchange="window.open(value, '_parent')">
+                  <option value="0">Select States:</option>
+                  <option value="1">All</option>
+                  <option value="2">West Bengal</option>
+                  <option value="3">Delhi</option>
+                  <option value="4">Maharashtra</option>
+                  <option value="5">Odisha</option>
+                  <option value="6">Tamil Nadu</option>
+                  <option value="7">Karnataka</option>
+                  <option value="8">Uttar Pradesh</option>
+                  <option value="9">Outreach</option>
+                </select>
+                </div>
+
+                <div class="icons">
+                    <i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                  </svg>
+                </i>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-arrow"><a href="/"><i style="font-size:24px" class="fa">&#xf060;</i></a></div>
+
+        <!-- Main contaner background and text -->
+        <div id="main_containt">
+            <div class="main1">
+                <div class="main_components">
+                    <h1>{{event.name}}</h1>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- icons  -->
+        <div class="desc_price">
+            <strong>{{event.summary | safe}}</strong><br><br><br>
+            <P style="font-weight: bolder; font-size: 30px; color: orange;">RULES & REGULATIONS:</P><br>
+            <strong>{{event.roles|linebreaks}}</strong><br><br>
+            <span> On {{event.start_date}}</span>
+            <Br></Br>
+            <span><strong> Rs. {{event.cost1}}{% if event.cost2 > 0 %}, {{ event.cost2 }}{% endif %}{% if event.cost3 > 0 %}, {{ event.cost3 }}{% endif %} </strong></span>
+        </div>
+
+        <!-- Events -->
+
+        <div class="btn">
+            <a href="{{event.payment | safe}}">
+                <button>PROCEED TO PAY</button>
+            </a>
+            <p>Hurry! {{event.participants}} seats left</p>
+        </div>
+
+    </div>
+    <script src="{% static 'newjs/script.js' %}"></script>
+</body>
+
+</html>

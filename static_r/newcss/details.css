@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    background-color: #f4fff9;
+}
+
+#sidebar-menu {
+    width: 4%;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: width 0.1s;
+    text-align: center;
+    padding-top: 20px;
+    background: rgba(240, 141, 71, 0.57);
+}
+
+#sidebar-menu i {
+    font-size: 20px;
+    margin: 0 5px 20px 0;
+}
+
+#sidebar-menu i:hover {
+    cursor: pointer;
+}
+
+.menuicon {
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.homeicon {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.hometag {
+    color: black;
+}
+
+#sidebar {
+    width: 0;
+    border-right: 2px solid rgba(74, 71, 71, 0.15);
+    z-index: 1;
+    overflow-x: hidden;
+    transition: width 0.5s;
+}
+
+#sidebar #logo {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 1px 0 lightgrey;
+}
+
+#sidebar #logo img {
+    width: 90%;
+    border-bottom: 1px solid rgba(74, 71, 71, 0.15);
+}
+
+#main {
+    width: 96%;
+    height: 100vh;
+    padding: 0px;
+    overflow-y: scroll;
+    background: rgba(227, 246, 253, 0.253);
+}
+
+
+/*============= Navbar css=============== */
+
+.navbar {
+    background-color: #f4fff9;
+    margin: 0px;
+    height: 62px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_header {
+    margin: 18px;
+}
+
+#side {
+    display: flex;
+    margin-top: 10px;
+}
+
+
+/* Search bar css */
+
+.search-bar {
+    padding-right: 20px;
+    margin-top: 2px;
+}
+
+.search-bar .search-input {
+    width: 300px;
+    padding: 5px 20px;
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 24px;
+    color: #575756;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.search-input::after {
+    border: none;
+}
+
+.filter {
+    margin-top: 2px;
+    padding-right: 20px;
+}
+
+select {
+    width: 200px;
+    padding: 8px 10px;
+    background-color: #f4fff9;
+}
+
+option {
+    font-size: 20px;
+    background-color: #f4fff9;
+}
+
+input:focus,
+option:focus,
+select:focus {
+    outline: none;
+}
+
+.icons {
+    margin-top: 10px;
+    padding-right: 20px;
+}
+
+.profile {
+    padding-right: 15px;
+}
+
+.profile_image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+/* back arrow */
+
+.back-arrow {
+    margin: 40px 0 30px 20px;
+}
+
+.back-arrow a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* main containt css */
+
+.main1 {
+    background-image: url("../img/Rectangle\ 1.png");
+    background-size: cover;
+    height: 300px;
+}
+
+.main_components {
+    padding: 100px 60px;
+}
+
+.main_components h1 {
+    font-size: 40px;
+    color: white;
+}
+
+.desc_price {
+    margin: 40px 0 30px 20px;
+    font-size: 25px;
+}
+
+.desc_price span {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.desc_price span:last-child {
+    font-size: 25px;
+}
+
+.btn {
+    margin: 40px 0 200px 20px;
+}
+
+.btn button {
+    /* margin: 40px 0 30px 20px; */
+    font-size: 20px;
+    border: none;
+    background-color: #f77618;
+    color: white;
+    padding: 10px 45px;
+    border-radius: 40px;
+    /* text-transform: uppercase; */
+    margin-top: 10px;
+}
+
+.btn p {
+    margin: 4px 0 30px 32px;
+    font-size: 15px;
+}
+
+.badge {
+    border-radius: 20px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #f77618;
+}
+
+#lblCartCount {
+    font-size: 11px;
+    background: #f77618;
+    color: #fff;
+    padding: 1px 5px;
+    vertical-align: top;
+    margin-top: 2px;
+    margin-left: -15px;
+}
+
+.proceed {
+    text-decoration: none;
+    color: black;
+}

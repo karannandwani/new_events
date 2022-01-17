@@ -1,0 +1,97 @@
+{% extends 'header_file.html' %}
+{% load static %}
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <head>
+        {% block extra_links %}
+        <title>{{event_name}} Registration</title>
+        <link href = "{% static 'form.css' %}" rel = "stylesheet">
+        {% endblock %}
+    </head>
+    <body>
+        {% block heading %}
+        FILL THE FORM
+        {% endblock %}
+        {% block rest_container%}
+        <div id = "rest_container">
+            <form enctype="multipart/form-data" method = "POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div onclick = "couponclicked()" id = "coupon_submit">Apply Coupon</div>
+                {% if group %}
+                <input type = "radio" name = "type_select" id = "type_select1" onclick = "changeCost('1')">
+                <label for = "type_select1">Solo</label>
+                <input type = "radio" name = "type_select" id = "type_select2" onclick = "changeCost('2')">
+                <label for = "type_select2">Group</label>
+                {% endif %}
+                <p style = "display: none;" id = "discount_details"></p>
+                <p>Event Chosen: {{ event_name }}</p>
+		<p>After payment, please DO NOT refresh the page until you get an email.<br>It might take up to 5 minutes for us to verify the payment.</p>
+                <div id ="submit_div"><input id = "submit" type="submit" value="PAY RS {{event_cost}}"></div>
+		<br><br>
+		<p id = "payment_steps">Steps for making the payment<br>With Paytm:<br>1. Enter your number and click on Get Otp.<br>
+		2.Enter the otp.<br>3. Choose your desired payment option (Debit Card, Credit Card, Wallet etc.)<br>4. Enter your card details if you selected
+		the card option in the previous step.<br>5. Stay on the payment page until you get a payment successful message (It can take upto 5 mins).<br>
+		6. Done<br><br> With UPI:<br> 1. Enter your UPI Id.<br>2. Go to your respective UPI application.<br>3. Confirm the payment request.
+		<br>4. Return to the payment page and wait till you get a payment successful message (It can take upto 5 mins)<br>5. Done</p>
+            </form>
+        </div>
+        <script type="application/javascript">
+            original_cost = parseInt(document.getElementById("id_cost").value);
+ 	    var event = "{{event_name}}";
+            var tech = event.slice(0,8);
+    	    var business = event.slice(0,17);
+	    if(tech == "TECHFEST")
+	    {
+ 		document.getElementById("techorbus").textContent = "Apply Code\n 'ONE' for particpating in one event.\n 'TWO' for participating in two events.";
+		document.getElementById("techorbus").textContent += "\n 'THREE' for participating in THREE events.\n 'FOUR' for participating in four events";
+    	    }
+		
+            function couponclicked()
+            {
+                var applied = 0;
+                var code_entered = document.getElementById("id_coupon").value;
+                {% for c in coupons %}
+                    var ccode = "{{c.code}}";
+                    var discount = "{{c.discount_amount}}";
+                    if(code_entered == ccode)
+                    {
+                        document.getElementById("submit").value = "PAY RS "+ (original_cost - parseInt(discount));
+                        document.getElementById("discount_details").style.display = "block";
+                        document.getElementById("discount_details").textContent = "Code Applied. Discount Amount =" + (original_cost - parseInt(discount));
+                        applied = 1;
+                        document.getElementById("id_cost").value = original_cost - parseInt(discount);
+                    }
+                {% endfor %}
+                if(applied == 0)
+                {
+                    document.getElementById("discount_details").style.display = "block";
+                    document.getElementById("discount_details").textContent = "Invalid Coupon";
+                }
+            }
+            var a = {{ event_cost }};
+            var b = a;
+            console.log(a);
+            var False = "False";
+            var True = "True";
+            if({{group}} == "True")
+            {
+                var b = {{ cost2 }};
+            }
+            function changeCost(c)
+           {
+                if (c == '1')
+                {
+                    document.getElementById("submit").value = "PAY RS "+a;
+                    document.getElementById("id_cost").value = a;
+                }
+                else
+                {
+                    document.getElementById("submit").value = "PAY RS "+b;
+                    document.getElementById("id_cost").value = b;
+                }
+           }
+        </script>
+        {% endblock %}
+    </body>
+</html>

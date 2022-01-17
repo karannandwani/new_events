@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177357127-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-177357127-1');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href = "{% static 'header_file.css' %}" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="{% static 'title_image.ico' %}" />
+    {% block extra_links %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+            <img src = "{% static 'BENGAL.png' %}">
+            <p> YOUTH INDIA FOUNDATION </p>
+            <img src = "{% static 'BENGAL.png' %}" id = "right_logo">
+    </header>
+    <div id = "heading_div"><h1 id = "state_heading">
+        {% block heading %}
+        {% endblock %}
+    </h1></div>
+    {% block rest_container %}
+    {% endblock %}
+    <br>
+</body>
+</html>
